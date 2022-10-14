@@ -1,6 +1,11 @@
+import checkValid from "./checkValid.js";
 
-export default function getUserInput() {
-  const userInput = document.getElementById('user-input')
-  
-  
+const userForm = document.getElementById('user-form')
+const userInput = document.getElementById('user-input')
+
+function getUserInput(event) {
+  event.preventDefault();
+  console.log(typeof userInput.value)
 }
+
+userForm.addEventListener('submit', getUserInput)

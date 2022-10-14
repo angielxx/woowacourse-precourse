@@ -25,6 +25,7 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "@woowacourse/mission-utils": "^1.0.1",
     "package.json": "^2.0.1"
   }
 }
