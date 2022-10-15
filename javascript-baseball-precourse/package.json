@@ -27,5 +27,6 @@
   "dependencies": {
     "@woowacourse/mission-utils": "^1.0.1",
     "package.json": "^2.0.1"
-  }
+  },
+  "type": "module"
 }

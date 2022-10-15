@@ -1,4 +1,4 @@
-const computerNum = function(){
+export default function getCom(){
   let nums = [];
   while ([...nums].length < 3) {
     let num = Math.floor(Math.random() * 10);
@@ -6,7 +6,5 @@ const computerNum = function(){
       nums.push(num);
     }
   }
-  return nums.join('')
-};
-
-console.log(typeof computerNum());
+  return nums
+}

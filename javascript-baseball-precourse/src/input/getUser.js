@@ -1,11 +1,13 @@
-import checkValid from "./checkValid.js";
+import checkValid from './checkValid.js';
 
-const userForm = document.getElementById('user-form')
-const userInput = document.getElementById('user-input')
+export function getUser() {
+  const userInput = document.getElementById('user-input')
+  const userInputValue = userInput.value;
 
-function getUserInput(event) {
-  event.preventDefault();
-  console.log(typeof userInput.value)
+  if(checkValid(userInputValue)){
+    return [...userInputValue]
+  } else {
+    alert('올바른 형태로 입력해주세요.')
+    return false;
+  }
 }
-
-userForm.addEventListener('submit', getUserInput)

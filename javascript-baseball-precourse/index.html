@@ -5,7 +5,11 @@
   <meta charset="UTF-8" />
   <title>숫자 야구 게임</title>
 </head>
-
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
 <body>
   <div id="app">
     <h1>⚾ 숫자 야구 게임</h1>
@@ -20,16 +24,13 @@
       <button id="submit">확인</button>
     </form>
     <h3>📄 결과</h3>
-    <div id="result">1볼 1스트라이크</div>
-    <button id="game-restart-button">재시작</button>
+    <div id="result">
+    </div>
+    <button id="game-restart-button" class="hidden">재시작</button>
   </div>
   <!-- mission-utils -->
   <script src="https://cdn.jsdelivr.net/npm/@woowacourse/mission-utils@1.0.1/dist/mission-utils.min.js"></script>
   <script type="module" src="src/index.js"></script>
-  <!-- js -->
-  <script src="./src/index.js"></script>
-  <script src="./src/input/getUser.js"></script>
-  <script src="./src/input/getCom.js"></script>
 </body>
 
 </html>
