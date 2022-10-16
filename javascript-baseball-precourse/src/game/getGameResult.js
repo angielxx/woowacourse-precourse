@@ -11,17 +11,18 @@ function strikeCount(computer, user) {
     return strike;
 }
 
+// 볼 = 공통원소 - 스트라이크
 function ballCount(computer, user) {
-    let ball = 0; 
-    const commonCount = user.filter(x => computer.includes(x));
-    ball = strike - commonCount
+    const strike = strikeCount(computer, user)
+    const commonArr = user.filter(x => computer.includes(x));
+    const ball = commonArr.length - strike
     return ball;
 }
 
 // 반환 = gameResult
 export default function getGameResult(computer, user) {
-    strike = strikeCount(computer, user)
-    ball = ballCount(computer, user)
+    let strike = strikeCount(computer, user)
+    let ball = ballCount(computer, user)
 
     if (strike === 3) {
         return '정답';
