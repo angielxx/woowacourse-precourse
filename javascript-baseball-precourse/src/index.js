@@ -1,6 +1,5 @@
 import playGame from "./game/playGame.js"
 import getGameResult from "./game/getGameResult.js";
-import {getUser} from "./input/getUser.js";
 import getCom from "./input/getCom.js";
 
 // 함수 구조 참고

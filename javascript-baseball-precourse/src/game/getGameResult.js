@@ -31,12 +31,12 @@ export default function getGameResult(computer, user) {
         return '낫싱';
     }
     if (ball && !strike) {
-        return `${ball}볼`;
+        return `${ball} 볼`;
     }
     if (!ball && strike) {
-        return `${strike}스트라이크`;
+        return `${strike} 스트라이크`;
     }
     if (ball && strike) {
-        return `${ball}볼 ${strike}스트라이크`;
+        return `${ball} 볼, ${strike} 스트라이크`;
     }
 }

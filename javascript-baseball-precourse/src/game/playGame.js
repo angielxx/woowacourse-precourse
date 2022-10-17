@@ -1,7 +1,5 @@
-import getGameResult from "./getGameResult.js";
 import {printGameResult, restartBtn, result} from "./printGameResult.js";
-import {getUser} from "../input/getUser.js";
-import getCom from "../input/getCom.js";
+import getUser from "../input/getUser.js";
 import BaseballGame from "../index.js";
 
 const userInput = document.getElementById('user-input');
@@ -25,8 +23,10 @@ export default function playGame(computer, play) {
     }
   })
 
+  // 재시작 버튼 누르면 리셋
   restartBtn.addEventListener('click', (event) => {
     restartGame();
+    // 인스턴스 새롭게 생성
     new BaseballGame();
   });
 }

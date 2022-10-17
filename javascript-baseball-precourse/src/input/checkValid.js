@@ -7,5 +7,4 @@ export default function checkValid(userInput) {
     } else {
         return false
     }
-    
 }
