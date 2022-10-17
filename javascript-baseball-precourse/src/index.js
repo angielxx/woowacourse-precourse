@@ -5,11 +5,10 @@ import getCom from "./input/getCom.js";
 // 함수 구조 참고
 export default function BaseballGame() {
     const computer = getCom();
-    console.log(computer)
+    console.log('computer :', computer)
 
     this.play = function (computer, user) {
-        console.log(computer, user)
-        console.log(getGameResult(computer, user))
+        console.log('user :', user)
         return getGameResult(computer, user);
     };
 
