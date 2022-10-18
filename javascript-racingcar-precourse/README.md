@@ -3,110 +3,69 @@
 </p>
 <h1 align="middle">자동차 경주 게임</h1>
 
-## 🔍 진행방식
-
-- 미션은 **기능 요구사항, 프로그래밍 요구사항, 과제 진행 요구사항** 세 가지로 구성되어 있다.
-- 세 개의 요구사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
-
----
-## 🎯 기능 요구사항
-초간단 자동차 경주 게임을 구현한다.
-
-- 주어진 횟수 동안 n 대의 자동차는 전진 또는 멈출 수 있다.
-- 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
-- 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
-- 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
-- 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
-- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
-- 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
-- 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 다시 입력할 수 있게 한다.
-
-<br>
-
-### 💻 실행 결과
-
-![실행이미지](images/result.jpg)
-
-<br>
-
----
-## ✅ 프로그래밍 요구사항
-- 주어진 `index.html`에 html 엘리먼트를 직접 추가하거나 기존의 html 엘리먼트를 임의로 삭제하지 않는다. id와 같은 선택자를 추가하는 작업만 가능하다.
-- 다음과 같이 Car 객체를 만들고, new 를 이용해 인스턴스를 만들어 사용한다.
-```javascript
-function Car(name) {
-  this.name = name;
-}
-
-class Car {
-  constructor(name) {
-    this.name = name;
-  }
-}
+## 📁 디렉토리
+```
+├── LICENSE
+├── README.md
+├── .gitignore
+├── .prettierrc
+├── index.html
+└── src
+    ├── index.js -> 게임을 진행하는 모듈을 호출하는 메인 모듈
+    │
+    ├── game -----> 게임 진행과 관련된 모듚을 모아놓은 폴더
+    │   ├── playGame.js ---------> 게임을 진행하는 모듈
+    │   ├── getGameResult.js ----> 게임 결과를 계산해주는 모듈
+    │   └── printGameResult.js --> 게임 결과를 화면에 출력해주는 모듈
+    │
+    └── input ----> Computer와 USER의 인풋과 관련된 모듈을 모아놓은 폴더
+        ├── getUserInput.js -----> USER에게 인풋을 받는 모듈
+        ├── checkValidInput.js --> USER의 인풋이 올바른지 확인하는 모듈
+        └── getComputerInput.js -> 컴퓨터의 인풋(정답)을 생성하는 모듈
 ```
 
-### 라이브러리
-- 전진하는 조건을 판단하기 위한 랜덤 값은 [`MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 구한다.
-  - `MissionUtils` 라이브러리 스크립트는 `index.html`에 이미 포함되어 전역 객체에 추가되어 있으므로, 따로 `import` 하지 않아도 구현 코드 어디에서든 사용할 수 있다.
+## 📋 구현할 기능
 
-  ```javascript
-  // ex)
-  const randomNumber = Random.pickNumberInRange(0, 9);
-  ```
+### input
 
-### 공통 요구사항
+- **1. USER에게 자동차 이름 Input 받아 입력 형태가 올바른지 체크하는 함수로 넘기기**
+  
+  - 5자 이하  
+  - 콤마로 구분
+  
+- **2. 자동차 Input이 올바른지 체크**
+  
+  - 5자 이하
+  - 중복되는 이름이 없어야 함
+  - Input이 올바른 경우 : 자동차 이름을 배열에 담아 게임을 실행하는 함수로 넘기기
+  - Input이 잘못된 경우 : 오류메세지를 출력하고 Input을 다시 받음
 
-- 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
-- **[자바스크립트 코드 컨벤션](https://github.com/woowacourse/woowacourse-docs/tree/feature/styleguide/styleguide/javascript)을 지키면서 프로그래밍** 한다.
-- **indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용**한다.
-  - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-  - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
-- **함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게** 만들어라.
-- 변수 선언시 `var` 를 사용하지 않는다. `const` 와 `let` 을 사용한다.
-  - [const](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/const)
-  - [let](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/let)
-- `import` 문을 이용해 스크립트를 모듈화하고 불러올 수 있게 만든다.
-  - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
-- **함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.**
-  - 함수(또는 메소드)가 한 가지 일만 잘 하도록 구현한다.
+- **3. 자동차 Input이 올바르지 않을 때 ```alert```를 이용해 메세지 출력**
 
+  - ```alert```를 이용해 잘못 된 메세지임을 출력
+  
+- **4. USER에게 게임을 시도할 횟수 Input 받기**
 
-<br>
+  - Input을 받아 게임을 실행하는 함수로 넘기기
 
-## 📝 과제 진행 요구사항
+### game
 
-- 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
-- **기능을 구현하기 전에 구현할 기능 목록을 정리해 javascript-racingcar-precourse/docs/README.md 파일에** 추가한다.
-- **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
-- [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
+- **1. 게임을 실행할 횟수만큼 play**
+  - 반복문으로 구현
 
-## ✉️ 미션 제출 방법
+- **2. 각 횟수마다 각 자동차의 전진할 조건을 확인**
 
-- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-   - GitHub을 활용한 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고해 제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원 플랫폼](https://apply.techcourse.co.kr) 에 접속하여 프리코스 과제를 제출한다.
-   - 자세한 방법은 [링크](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 를 참고한다.
-   - **Pull Request만 보내고, 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+  - 0부터 9 사이의 숫자를 랜덤으로 고른 뒤 그 값이 4 이상이면 전진
+  - 각 자동차의 위치는 자동차의 번호를 인덱스로 하는 배열에 각 위치값을 저장
+  - 각 자동차의 위치를 갱신하여 화면에 출력하는 함수로 넘기기
+  
+- **3. 각 게임 회차마다 자동차의 상태를 화면에 출력**
 
+  - 실행 결과를 HTML에 출력
 
-### 🚨 과제 제출 전 체크리스트 - 0점 방지를 위한 주의사항
-- 요구사항에 명시된 출력값 형식을 지키지 않을 경우 기능 구현을 모두 정상적으로 했더라도 0점으로 처리된다.
-- 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는 지 확인한다. **테스트가 실패할 경우 0점으로 처리되므로, 반드시 확인 후 제출한다.**
+- **4. 게임을 모두 실행하고 우승자를 판별**
+  - 게임을 모두 실행한 뒤 각 자동차의 위치값이 저장된 배열을 입력값으로 받는다.
+  - 우승자를 배열에 담아 반환
 
-### ✔️ 테스트 실행 가이드
-- 테스트 실행에 필요한 패키지 설치를 위해 `Node.js` 버전 `14` 이상이 필요하다. 
-- 다음 명령어를 입력해 패키지를 설치한다.     
-```bash
-// {폴더 경로}/javascript-racingcar-precourse/ 에서
-npm install
-```     
-
-- 설치가 완료되었다면, 다음 명령어를 입력해 테스트를 실행한다.
-```bash
-// {폴더 경로}/javascript-racingcar-precourse/ 에서
-npm run test
-```
-
-- 아래와 같은 화면이 나오며 모든 테스트가 pass한다면 성공! 
-
-![테스트 결과](./images/test_result.png)
+- **5. 최종 우승자를 화면에 출력**
+  - 모든 우승자를 화면에 출력
